@@ -1,0 +1,56 @@
+Create folder for project
+
+Create virtual environment -> python -m venv venv
+activate virtual environment-> .\venv\Scripts\activate
+
+Created workspace in vs code-> read about this more for reason.
+
+Initiate Git repo and create gitignore
+
+Create new file- requirements.txt -> write the libraries required to be installed by pip
+
+Once created install all lib by pip install -r requirements.txt
+
+Upgrade pip if available
+
+Then, in this he created 2 folders -> backend and py_client(python api clients )
+
+cd backend-> go inside that folder
+
+Create django proj in it-> django-admin startproject <projectname> .
+
+Create basic.py in py_client to create python api clients
+
+To run django project: python manage.py runserver 8000 (here 8000 is the port number)
+
+http://127.0.0.1:8000/  => the server 
+
+
+Creating an app in django=> Its like section
+-> Go to the project (here cfehome) then add app 'api' in settings.py INSTALLED_APPS
+-> Create urls.py(write paths), and views.py(where we write methods)
+-> Also include the api url path in original projects urls
+
+Creating models in django:
+-> create model in models.py of the app
+-> make migration using python manage.py makemigrations
+-> for demo purposes: use python manage.py shell (python interpreter)
+--------------------
+>>> from products.models import Product
+>>> Product.objects.create(title='abs',content='sbh',
+price=9.0
+... )
+<Product: Product object (1)>
+>>> Product.objects.create(title='abs',content='sbh',price=12.0) 
+<Product: Product object (2)>
+>>> Product.objects.all().order_by("?").first()
+<Product: Product object (1)>
+------------------------
+
+To use Rest framework=> add rest_framework in INSTALLED_APPS of settings in main project
+
+We can have multiple serializers for same model to get the data as per required.
+
+
+
+
