@@ -52,5 +52,21 @@ To use Rest framework=> add rest_framework in INSTALLED_APPS of settings in main
 We can have multiple serializers for same model to get the data as per required.
 
 
+Rest Framework: Has serializers
+
+Class based and Function based Api views- for CRUD:
+Can use generic view for all together
+
+Can add permissions for CRUD: permission and authentication classes
+
+
+Add superuser for django project: python manage.py createsuperuser
+
+For token authentication: Add rest_framework.auth_token in INSTALLED_APPS and then migrate
+
+
+'''
+URLS, reverse, serializers: 3:25:51
+'''
 
 
