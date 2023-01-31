@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from .models import Product
 from .serializers import ProductSerializer
 from django.shortcuts import get_object_or_404
-from api.mixins import StaffEditorPermissionMixin
+from api.mixins import (StaffEditorPermissionMixin,UserQuerySetMixin)
 from api.permissions import IsStaffEditorPermission
 
 '''
@@ -25,11 +25,14 @@ class ProductCreateAPIView(
         if content==None:
             content=title
         serializer.save(content=content)
+    
+    
 
 product_create_view=ProductCreateAPIView.as_view()
 
 
 class ProductListCreateAPIView(
+    UserQuerySetMixin,
     StaffEditorPermissionMixin,
     generics.ListCreateAPIView):
 
@@ -45,7 +48,20 @@ class ProductListCreateAPIView(
         content=serializer.validated_data.get('content') or None
         if content==None:
             content=title
-        serializer.save(content=content)
+        serializer.save(user=self.request.user,content=content)
+    
+
+    '''
+    Alternative Mixin-> UserQuerySetMixin
+    '''
+    # def get_queryset(self, *args, **kwargs):
+    #     qs=super().get_queryset(*args, **kwargs)
+    #     request=self.request
+    #     user=request.user
+    #     print(f'user={user}')
+    #     if not user.is_authenticated:
+    #         return Product.objects.none()
+    #     return qs.filter(user=request.user)
 
 product_list_create_view=ProductListCreateAPIView.as_view()
 
