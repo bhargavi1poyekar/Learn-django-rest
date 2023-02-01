@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'products',
     'rest_framework',
     'rest_framework.authtoken',
+    'search',
     
 ]
 
@@ -137,5 +138,9 @@ REST_FRAMEWORK={
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
         
     ],
+
+    "DEFAULT_PAGINATION_CLASS":"rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE":2
+    
 
 }
